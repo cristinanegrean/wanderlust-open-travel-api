@@ -1,0 +1,64 @@
+group 'cristina.tech'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.M3'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'garrage'
+    version = '1.0.0-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+    compile('commons-beanutils:commons-beanutils:1.9.2')
+    compile('joda-time:joda-time:2.9.4')
+
+    runtime('org.flywaydb:flyway-core')
+    runtime('org.postgresql:postgresql')
+    runtime('com.zaxxer:HikariCP')
+    compile('commons-beanutils:commons-beanutils')
+    compile('joda-time:joda-time')
+
+
+    testRuntime('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('junit:junit:4.12')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
