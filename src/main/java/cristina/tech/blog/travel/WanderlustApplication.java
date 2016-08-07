@@ -1,12 +1,12 @@
-package cristina.tech.garrage;
+package cristina.tech.blog.travel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GarrageApplication {
+public class WanderlustApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GarrageApplication.class, args);
+		SpringApplication.run(WanderlustApplication.class, args);
 	}
 }

@@ -7,7 +7,7 @@ repositories {
 
 buildscript {
     ext {
-        springBootVersion = '1.4.0.M3'
+        springBootVersion = '1.4.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -24,7 +24,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'garrage'
+    baseName = 'wanderlust'
     version = '1.0.0-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -37,21 +37,19 @@ repositories {
 }
 
 dependencies {
-
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-devtools')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider')
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-joda')
-    compile('commons-beanutils:commons-beanutils:1.9.2')
-    compile('joda-time:joda-time:2.9.4')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+    compile('org.springframework.data:spring-data-rest-core:2.5.2.RELEASE')
+    compile('org.springframework.data:spring-data-rest-webmvc:2.5.2.RELEASE')
+
+    compile('joda-time:joda-time')
 
     runtime('org.flywaydb:flyway-core')
     runtime('org.postgresql:postgresql')
     runtime('com.zaxxer:HikariCP')
-    compile('commons-beanutils:commons-beanutils')
-    compile('joda-time:joda-time')
+
 
 
     testRuntime('com.h2database:h2')
