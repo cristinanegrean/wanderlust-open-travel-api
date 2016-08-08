@@ -7,32 +7,27 @@ Sandbox repository to showcase the usage of [JSR 303 - Bean Validation API] (htt
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
-## Tools required to power-up and test-drive the code sample
--[Java 8 SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
--[Postgresql 9](https://www.postgresql.org/)
--[Gradle](https://gradle.org/)
--[Git](https://git-scm.com/downloads)
--[Postman](https://www.getpostman.com/)
+### Prerequisites 
+* [Java 8 SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Postgresql 9](https://www.postgresql.org/)
+* [Gradle](https://gradle.org/)
+* [Git](https://git-scm.com/downloads)
+* [Postman](https://www.getpostman.com/)
 
-## On OS X follow below steps 
-## Quickly setup postgresql using homebrew
-
+### On OS X follow below steps 
+1) Quickly setup postgresql using homebrew
 ```
 $ brew update
 $ brew install postgresql
 $ postgres -D /usr/local/var/postgres  // start the server
 ```
-
-Open a new terminal window
-
+2) Open a new terminal window
 ```
 $ createdb wanderlust
 $ psql -h localhost -U [OS X user account name] wanderlust // verify that you can connect to postgresql and the database
 ```
-
 Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start.
-## Environment variables
-
+3) Check your environment variables
 ```
 $ sudo nano ~/.bash_profile
 export JAVA_HOME=$(/usr/libexec/java_home 1.8)
@@ -45,16 +40,14 @@ export PWD_POSTGRES=[secret]
 alias gradle="./gradlew" 
 alias startdb="postgres -D /usr/local/var/postgres"
 ```
-
-Open a new terminal to test toolbox installation:
-
+4) Open a new terminal to test toolbox installation:
 ```
 $ java -version
 $ gradle -version
 $ git
 ```
 
-## Bootstrapping the service locally:
+### Bootstrapping the service locally:
 
 ```
 $ git clone https://github.com/cristinanegrean/rest-service-bean-validation
@@ -63,4 +56,4 @@ $ ./gradlew clean build  // builds and runs the tests
 $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
 
-Tip: you may want to enable [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) to execute project builds more quickly.
+* Tip: you may want to enable [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) to execute project builds more quickly.
