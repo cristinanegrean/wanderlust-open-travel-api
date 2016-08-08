@@ -1,9 +1,9 @@
-## rest-service-bean-validation
+### rest-service-bean-validation
 Sandbox repository to showcase the usage of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/) in combination with projects:
--[Spring Boot](https://spring.io/blog/2016/07/28/spring-boot-1-4-released)
--[Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
--[Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
--[Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of JSR 303.
+* [Spring Boot](https://spring.io/blog/2016/07/28/spring-boot-1-4-released)
+* [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
+* [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
+* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of JSR 303.
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
@@ -26,7 +26,6 @@ $ postgres -D /usr/local/var/postgres  // start the server
 $ createdb wanderlust
 $ psql -h localhost -U [OS X user account name] wanderlust // verify that you can connect to postgresql and the database
 ```
-Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start.
 3) Check your environment variables
 ```
 $ sudo nano ~/.bash_profile
@@ -56,4 +55,11 @@ $ ./gradlew clean build  // builds and runs the tests
 $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
 
-* Tip: you may want to enable [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) to execute project builds more quickly.
+### Wanderlust [HAL](https://apigility.org/documentation/api-primer/halprimer) links JSON:
+* http://localhost:8080/api/opentravel/destinations
+* http://localhost:8080/api/opentravel/holidays
+* http://localhost:8080/api/opentravel/agents
+
+### Info:
+* Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start. You can check the schema version via [Spring Actuator endpoint](http://localhost:8080/flyway)
+* Enabling [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) will result in faster subsequent project builds.
