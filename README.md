@@ -1,4 +1,4 @@
-### rest-service-bean-validation
+### [![Build Status](https://travis-ci.org/cristinanegrean/rest-service-bean-validation.svg?branch=master)](https://travis-ci.org/cristinanegrean/rest-service-bean-validation)
 Sandbox repository to showcase the usage of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/) in combination with projects:
 * [Spring Boot](https://spring.io/blog/2016/07/28/spring-boot-1-4-released)
 * [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
