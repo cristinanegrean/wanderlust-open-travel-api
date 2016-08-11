@@ -1,10 +1,14 @@
 package cristina.tech.blog.travel.model;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.Embeddable;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -15,12 +19,19 @@ public class ContactInfo extends PostalAddress {
 
     @NotEmpty(message = "Contact info email cannot be null!")
     @Email
+    @JsonProperty
     private String email;
 
+    @Pattern(regexp="(^$|[0-9]{10})")
+    @JsonProperty
     private String phone;
 
+    @Pattern(regexp="(^$|[0-9]{10})")
+    @JsonProperty
     private String fax;
 
+    @JsonProperty
+    @URL
     private String website;
 
     public ContactInfo() { }
@@ -40,16 +51,13 @@ public class ContactInfo extends PostalAddress {
         ContactInfo that = (ContactInfo) o;
 
         return Objects.equals(email, that.email)
-                && Objects.equals(phone, that.phone)
-                && Objects.equals(fax, that.fax)
-                && Objects.equals(website, that.website)
                 && super.equals(that);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, phone, fax, website, super.hashCode());
+        return Objects.hash(email, super.hashCode());
     }
 
     @Override

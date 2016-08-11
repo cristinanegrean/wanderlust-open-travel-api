@@ -1,8 +1,15 @@
 package cristina.tech.blog.travel.model;
 
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -10,12 +17,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
-@Table(name = "holiday_packages")
+
 /**
  * Models an Open Travel Wanderlust API Holiday.
  * A Holiday has for now one {@link Destination} only and it is offered by one or many travel {@link Agent}(s).
  */
+@Entity
+@Table(name = "holiday_packages")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Holiday extends BaseEntity {
     private static final long serialVersionUID = 1126074635410771213L;
 
@@ -26,35 +35,48 @@ public class Holiday extends BaseEntity {
     private Destination destination;
 
     @Future
+    @JsonProperty
     private LocalDate startOn;
 
     @Range(min = 3, max = 90)
+    @JsonProperty
     private Integer daysCount;
 
+    @JsonProperty
     private String departFrom;
 
+    @JsonProperty
     private BigDecimal price;
 
     @NotNull(message = "flightIncluded flag must be set")
+    @JsonProperty
     private Boolean flightIncluded;
 
     @NotNull(message = "accomodationIncluded flag must be set")
+    @JsonProperty
     private Boolean accomodationIncluded;
 
+    @JsonProperty
     private String packageInfo;
 
     public Holiday() { }
 
-    public Holiday(Destination destination, LocalDate startOn, Integer daysCount, String departFrom,
-                   BigDecimal price, Boolean flightIncluded, Boolean accomodationIncluded, String packageInfo) {
+    public Holiday(Destination destination, Boolean flightIncluded, Boolean accomodationIncluded) {
         this.destination = destination;
-        this.startOn = startOn;
-        this.daysCount = daysCount;
-        this.departFrom = departFrom;
-        this.price = price;
         this.flightIncluded = flightIncluded;
         this.accomodationIncluded = accomodationIncluded;
-        this.packageInfo = packageInfo;
+    }
+
+    public void setStartOn(LocalDate startOn) {
+        this.startOn = startOn;
+    }
+
+    public void setDaysCount(Integer daysCount) {
+        this.daysCount = daysCount;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     @Override
@@ -70,13 +92,15 @@ public class Holiday extends BaseEntity {
                 && Objects.equals(departFrom, that.departFrom)
                 && Objects.equals(price, that.price)
                 && Objects.equals(flightIncluded, that.flightIncluded)
-                && Objects.equals(accomodationIncluded, that.accomodationIncluded);
+                && Objects.equals(accomodationIncluded, that.accomodationIncluded)
+                && super.equals(that);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(destination, startOn, daysCount, departFrom, price, flightIncluded, accomodationIncluded);
+        return Objects.hash(
+                destination, startOn, daysCount, departFrom, price, flightIncluded, accomodationIncluded, super.hashCode());
     }
 
     @Override

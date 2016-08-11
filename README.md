@@ -1,9 +1,9 @@
-### [![Build Status](https://travis-ci.org/cristinanegrean/rest-service-bean-validation.svg?branch=master)](https://travis-ci.org/cristinanegrean/rest-service-bean-validation)
+### rest-service-bean-validation [![Build Status](https://travis-ci.org/cristinanegrean/rest-service-bean-validation.svg?branch=master)](https://travis-ci.org/cristinanegrean/rest-service-bean-validation)
 Sandbox repository to showcase the usage of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/) in combination with projects:
 * [Spring Boot](https://spring.io/blog/2016/07/28/spring-boot-1-4-released)
 * [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
 * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
-* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of JSR 303.
+* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of JSR 303. JSR-303 allows you to define declarative validation constraints and custom validators.
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
@@ -56,9 +56,9 @@ $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=po
 ```
 
 ### Wanderlust [HAL](https://apigility.org/documentation/api-primer/halprimer) links JSON:
-* http://localhost:8080/api/opentravel/destinations
-* http://localhost:8080/api/opentravel/holidays
-* http://localhost:8080/api/opentravel/agents
+* http://localhost:9000/api/opentravel/destinations
+* http://localhost:9000/api/opentravel/holidays
+* http://localhost:9000/api/opentravel/agents
 
 ### Info:
 * Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start. You can check the schema version via [Spring Actuator endpoint](http://localhost:8080/flyway)

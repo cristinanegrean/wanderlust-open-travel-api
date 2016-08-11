@@ -1,5 +1,6 @@
 package cristina.tech.blog.travel.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Embeddable;
@@ -16,10 +17,13 @@ public class PostalAddress implements Serializable {
     @NotEmpty(message = "Postal address country cannot be null!")
     protected String country;
 
+    @JsonProperty
     protected String city;
 
+    @JsonProperty
     protected String postalCode;
 
+    @JsonProperty
     protected String streetAddress;
 
     public PostalAddress() { }

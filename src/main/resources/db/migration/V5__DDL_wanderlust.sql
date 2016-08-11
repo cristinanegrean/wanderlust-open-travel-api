@@ -15,9 +15,7 @@ CREATE TABLE destinations (
 
 CREATE TABLE destination_facts (
   destination SERIAL REFERENCES destinations(id),
-  fact TEXT NOT NULL,
-  fact_index SMALLINT NOT NULL,
-  UNIQUE (destination, fact_index)
+  fact TEXT NOT NULL
 );
 
 CREATE TABLE travel_agents (

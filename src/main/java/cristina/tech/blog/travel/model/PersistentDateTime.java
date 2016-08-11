@@ -106,11 +106,13 @@ public class PersistentDateTime implements EnhancedUserType, Comparable {
     }
 
     @Override
+    @Deprecated
     public String toXMLString(Object value) {
         return null;
     }
 
     @Override
+    @Deprecated
     public Object fromXMLString(String xmlValue) {
         return null;
     }

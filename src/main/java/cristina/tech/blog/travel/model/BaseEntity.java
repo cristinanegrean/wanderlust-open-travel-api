@@ -1,6 +1,7 @@
 package cristina.tech.blog.travel.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.chrono.ISOChronology;
@@ -20,7 +21,7 @@ public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+    @JsonTypeId
     protected Integer id;
 
     @Column(name = "created_at", nullable = false)
