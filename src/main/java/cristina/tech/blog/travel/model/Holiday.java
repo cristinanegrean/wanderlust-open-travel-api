@@ -1,15 +1,9 @@
 package cristina.tech.blog.travel.model;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -24,7 +18,6 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "holiday_packages")
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Holiday extends BaseEntity {
     private static final long serialVersionUID = 1126074635410771213L;
 
@@ -35,28 +28,21 @@ public class Holiday extends BaseEntity {
     private Destination destination;
 
     @Future
-    @JsonProperty
     private LocalDate startOn;
 
     @Range(min = 3, max = 90)
-    @JsonProperty
     private Integer daysCount;
 
-    @JsonProperty
     private String departFrom;
 
-    @JsonProperty
     private BigDecimal price;
 
     @NotNull(message = "flightIncluded flag must be set")
-    @JsonProperty
     private Boolean flightIncluded;
 
     @NotNull(message = "accomodationIncluded flag must be set")
-    @JsonProperty
     private Boolean accomodationIncluded;
 
-    @JsonProperty
     private String packageInfo;
 
     public Holiday() { }

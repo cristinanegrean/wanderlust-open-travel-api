@@ -1,6 +1,7 @@
 package cristina.tech.blog.travel.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Embeddable;
@@ -10,6 +11,8 @@ import java.util.Objects;
 
 @MappedSuperclass
 @Embeddable
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility= JsonAutoDetect.Visibility.ANY)
 public class PostalAddress implements Serializable {
 
     private static final long serialVersionUID = 1126074635410771214L;
@@ -17,13 +20,10 @@ public class PostalAddress implements Serializable {
     @NotEmpty(message = "Postal address country cannot be null!")
     protected String country;
 
-    @JsonProperty
     protected String city;
 
-    @JsonProperty
     protected String postalCode;
 
-    @JsonProperty
     protected String streetAddress;
 
     public PostalAddress() { }

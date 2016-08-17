@@ -1,7 +1,6 @@
 package cristina.tech.blog.travel.model;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
@@ -19,18 +18,14 @@ public class ContactInfo extends PostalAddress {
 
     @NotEmpty(message = "Contact info email cannot be null!")
     @Email
-    @JsonProperty
     private String email;
 
     @Pattern(regexp="(^$|[0-9]{10})")
-    @JsonProperty
     private String phone;
 
     @Pattern(regexp="(^$|[0-9]{10})")
-    @JsonProperty
     private String fax;
 
-    @JsonProperty
     @URL
     private String website;
 

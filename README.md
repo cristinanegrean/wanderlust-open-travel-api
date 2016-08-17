@@ -1,9 +1,10 @@
-### rest-service-bean-validation [![Build Status](https://travis-ci.org/cristinanegrean/rest-service-bean-validation.svg?branch=master)](https://travis-ci.org/cristinanegrean/rest-service-bean-validation)
-Sandbox repository to showcase the usage of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/) in combination with projects:
-* [Spring Boot](https://spring.io/blog/2016/07/28/spring-boot-1-4-released)
+### wanderlust-open-travel-api [![Build Status](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api.svg?branch=master)](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api)
+Sandbox repository to showcase creating a discoverable REST API for your application domain model using [HAL](https://apigility.org/documentation/api-primer/halprimer) as media type. 
+Technology stack:
+* [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
 * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
-* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of JSR 303. JSR-303 allows you to define declarative validation constraints and custom validators.
+* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/). 
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
@@ -55,7 +56,8 @@ $ ./gradlew clean build  // builds and runs the tests
 $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
 
-### Wanderlust [HAL](https://apigility.org/documentation/api-primer/halprimer) links JSON:
+### Project contains a [test collection](https://github.com/cristinanegrean/wanderlust-open-travel-api/blob/master/Wanderlust_Open_Travel_API.postman_collection.json) which can be imported into [Postman](https://www.getpostman.com/) to navigate API links.
+Main [HAL](https://apigility.org/documentation/api-primer/halprimer) links:
 * http://localhost:9000/api/opentravel/destinations
 * http://localhost:9000/api/opentravel/holidays
 * http://localhost:9000/api/opentravel/agents

@@ -1,6 +1,8 @@
 package cristina.tech.blog.travel.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -14,6 +16,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 @MappedSuperclass
+@JsonIgnoreProperties({ "createdAt", "modifiedAt" })
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonAutoDetect(fieldVisibility= JsonAutoDetect.Visibility.ANY)
 public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1126074635410771212L;
@@ -26,12 +31,10 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "created_at", nullable = false)
     @Type(type="cristina.tech.blog.travel.model.PersistentDateTime")
-    @JsonIgnore
     protected DateTime createdAt;
 
     @Column(name = "modified_at", nullable = false)
     @Type(type="cristina.tech.blog.travel.model.PersistentDateTime")
-    @JsonIgnore
     protected DateTime modifiedAt = new DateTime();
 
     @PrePersist()
