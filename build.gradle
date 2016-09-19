@@ -7,7 +7,8 @@ repositories {
 
 buildscript {
     ext {
-        springBootVersion = '1.4.0.RELEASE'
+        // Auto-configuration issue in 1.4.0.RELEASE, forces to include GSON JSON, fixed in 1.4.1 SNAPSHOT: https://github.com/spring-projects/spring-boot/issues/6502
+        springBootVersion = '1.4.1.BUILD-SNAPSHOT'
     }
     repositories {
         mavenCentral()
@@ -50,9 +51,12 @@ dependencies {
     runtime('org.postgresql:postgresql')
     runtime('com.zaxxer:HikariCP')
 
-    testRuntime('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('junit:junit:4.12')
+
+    testRuntime('com.h2database:h2')
+    /*testRuntime('com.google.code.gson:gson') */
+
 }
 
 task wrapper(type: Wrapper) {

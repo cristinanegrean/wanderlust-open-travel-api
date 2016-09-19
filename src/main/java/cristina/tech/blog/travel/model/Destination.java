@@ -31,6 +31,22 @@ public class Destination extends BaseEntity {
     @Column(name="fact")
     private List<String> facts;
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public List<String> getFacts() {
+        return this.facts;
+    }
+
     protected Destination() { }
 
     public Destination(String name, String country) {

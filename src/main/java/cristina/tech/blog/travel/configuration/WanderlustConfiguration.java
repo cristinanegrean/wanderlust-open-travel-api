@@ -23,8 +23,13 @@ public class WanderlustConfiguration extends RepositoryRestConfigurerAdapter {
     }
 
     /**
-     * Overrides default behavior by adding validators manually.
-     * @param validatingListener The {@link org.springframework.context.ApplicationListener} responsible for invoking Validator instances.
+     * Overridding default behavior by adding HibernateValidator instance manually.
+     *
+     * @see org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer#configureValidatingRepositoryEventListener(
+     * org.springframework.data.rest.core.event.ValidatingRepositoryEventListener)
+     * @param validatingListener The {@link org.springframework.context.ApplicationListener} responsible for invoking the HibernateValidator instance after the correct event.
+     * There are eight different events that the REST exporter emits throughout the process of working with an entity. Those are: beforeCreate, afterCreate, beforeSave, afterSave,
+     *                           beforeLinkSave, afterLinkSave, beforeDelete, afterDelete
      */
     @Override
     public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {

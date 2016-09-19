@@ -2,7 +2,6 @@ package cristina.tech.blog.travel.repository;
 
 
 import cristina.tech.blog.travel.model.Destination;
-import cristina.tech.blog.travel.model.Holiday;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -15,5 +14,5 @@ public interface DestinationRepository extends PagingAndSortingRepository<Destin
 
     List<Destination> findByCountry(@Param("country") String country);
 
-    Optional<Holiday> findByName(@Param("name") String name);
+    Optional<Destination> findByName(@Param("name") String name);
 }
