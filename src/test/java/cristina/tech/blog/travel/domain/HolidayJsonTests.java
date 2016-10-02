@@ -55,7 +55,8 @@ public class HolidayJsonTests {
         assertThat(holiday.getFlightIncluded()).isEqualTo(true);
         assertThat(holiday.getDepartFrom()).isEqualTo("Amsterdam Airport");
         assertThat(holiday.getPackageInfo()).isEqualTo("Group Travel 'On a shoe string'");
-        assertThat(holiday.getStartOn().toString()).contains("Oct 17 00:00:00 CEST 2016");
+        assertThat(holiday.getStartOn()).hasMonth(10);
+        assertThat(holiday.getStartOn()).hasYear(2016);
         assertThat(holiday.getPrice()).isEqualTo(new BigDecimal(1700));
     }
 }
