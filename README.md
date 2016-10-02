@@ -1,4 +1,4 @@
-### wanderlust-open-travel-api [![Build Status](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api.svg?branch=master)](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api)
+### wanderlust-open-travel-api [![Build Status](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api.svg?branch=master)](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api) [![Coverage Status](https://coveralls.io/repos/github/cristinanegrean/wanderlust-open-travel-api/badge.svg)](https://coveralls.io/github/cristinanegrean/wanderlust-open-travel-api)
 Sandbox repository to showcase creating a discoverable REST API for your application domain model using [HAL](https://apigility.org/documentation/api-primer/halprimer) as media type. 
 Technology stack:
 * [Spring Boot](http://projects.spring.io/spring-boot/)
