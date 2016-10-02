@@ -1,7 +1,7 @@
-package cristina.tech.blog.travel.repository;
+package cristina.tech.blog.travel;
 
 
-import cristina.tech.blog.travel.model.Destination;
+import cristina.tech.blog.travel.domain.Destination;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

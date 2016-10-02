@@ -1,6 +1,6 @@
-package cristina.tech.blog.travel.repository;
+package cristina.tech.blog.travel;
 
-import cristina.tech.blog.travel.model.Holiday;
+import cristina.tech.blog.travel.domain.Holiday;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,4 +13,5 @@ public interface HolidayRepository extends PagingAndSortingRepository<Holiday, I
 
     @Query("select h from Holiday h where h.destination.country = :country")
     List<Holiday> findByDestinationCountry(@Param("country") String country);
+
 }

@@ -1,4 +1,4 @@
-package cristina.tech.blog.travel.model;
+package cristina.tech.blog.travel.domain;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
@@ -8,12 +8,14 @@ import org.joda.time.DateTime;
 import java.io.Serializable;
 import java.sql.*;
 
-import static  org.hibernate.type.StandardBasicTypes.TIMESTAMP;
+import static org.hibernate.type.StandardBasicTypes.TIMESTAMP;
 
-
+/**
+ * Replace usage with org.joda.time.contrib.hibernate.PersistentDateTime.
+ */
 public class PersistentDateTime implements EnhancedUserType, Comparable {
 
-    private static final int[] SQL_TYPES = new int[] { Types.TIMESTAMP };
+    private static final int[] SQL_TYPES = new int[]{Types.TIMESTAMP};
 
     public int[] sqlTypes() {
         return SQL_TYPES;
@@ -60,9 +62,11 @@ public class PersistentDateTime implements EnhancedUserType, Comparable {
         }
     }
 
-    /** Trouble method */
-    public Object nullSafeGet(ResultSet rs, String columnName, SessionImplementor session, Object owner) throws HibernateException, SQLException  {
-        return   nullSafeGet(rs, new String[] { columnName }, session, owner);
+    /**
+     * Trouble method
+     */
+    public Object nullSafeGet(ResultSet rs, String columnName, SessionImplementor session, Object owner) throws HibernateException, SQLException {
+        return nullSafeGet(rs, new String[]{columnName}, session, owner);
     }
 
     @Override
@@ -108,13 +112,13 @@ public class PersistentDateTime implements EnhancedUserType, Comparable {
     @Override
     @Deprecated
     public String toXMLString(Object value) {
-        return null;
+        return value.toString();
     }
 
     @Override
     @Deprecated
     public Object fromXMLString(String xmlValue) {
-        return null;
+        return new DateTime(xmlValue);
     }
 
 }

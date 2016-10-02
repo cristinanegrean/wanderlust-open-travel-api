@@ -7,8 +7,7 @@ repositories {
 
 buildscript {
     ext {
-        // Auto-configuration issue in 1.4.0.RELEASE, forces to include GSON JSON, fixed in 1.4.1 SNAPSHOT: https://github.com/spring-projects/spring-boot/issues/6502
-        springBootVersion = '1.4.1.BUILD-SNAPSHOT'
+        springBootVersion = '1.4.0.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -28,6 +27,7 @@ jar {
     baseName = 'wanderlust'
     version = '1.0.0-SNAPSHOT'
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -41,11 +41,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
-
-    compile('org.springframework.data:spring-data-rest-core:2.5.2.RELEASE')
-    compile('org.springframework.data:spring-data-rest-webmvc:2.5.2.RELEASE')
-
     compile('joda-time:joda-time')
+
+    // optional dependency if you want to load a HAL browser when you issue an HTTP GET to the root URL: http://localhost:9000/api/opentravel/
+    // compile('org.springframework.data:spring-data-rest-hal-browser')
 
     runtime('org.flywaydb:flyway-core')
     runtime('org.postgresql:postgresql')
@@ -55,8 +54,8 @@ dependencies {
     testCompile('junit:junit:4.12')
 
     testRuntime('com.h2database:h2')
-    /*testRuntime('com.google.code.gson:gson') */
-
+    // remove GSON test runtime after https://github.com/spring-projects/spring-boot/issues/6502 fix is released
+    testRuntime('com.google.code.gson:gson')
 }
 
 task wrapper(type: Wrapper) {

@@ -56,12 +56,12 @@ $ ./gradlew clean build  // builds and runs the tests
 $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
 
-### Project contains a [test collection](https://github.com/cristinanegrean/wanderlust-open-travel-api/blob/master/Wanderlust_Open_Travel_API.postman_collection.json) which can be imported into [Postman](https://www.getpostman.com/) to navigate API links.
+### Project contains a [test collection](https://github.com/cristinanegrean/wanderlust-open-travel-api/blob/master/Wanderlust_OpenTravelAPI_Postman_collection.json) which can be imported into [Postman](https://www.getpostman.com/) to navigate API links.
 Main [HAL](https://apigility.org/documentation/api-primer/halprimer) links:
 * http://localhost:9000/api/opentravel/destinations
 * http://localhost:9000/api/opentravel/holidays
 * http://localhost:9000/api/opentravel/agents
 
 ### Info:
-* Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start. You can check the schema version via [Spring Actuator endpoint](http://localhost:8080/flyway)
+* Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start. You can check the schema version and list of DB scripts via [Spring Actuator endpoint](http://localhost:9000/flyway)
 * Enabling [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) will result in faster subsequent project builds.
