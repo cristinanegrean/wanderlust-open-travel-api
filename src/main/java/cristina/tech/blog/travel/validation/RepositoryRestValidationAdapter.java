@@ -9,6 +9,11 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+
+/**
+ * There are two ways to register a Validator instance in Spring Data REST: wire it by bean name or register the validator manually.
+ * We are going to register HibernateValidator manually. For all JPA Entities, validations rules are defined inline via annotations.
+ */
 @Configuration
 public class RepositoryRestValidationAdapter extends RepositoryRestConfigurerAdapter {
 

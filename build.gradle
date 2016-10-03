@@ -47,6 +47,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
     compile('joda-time:joda-time')
+    compile('org.jadira.usertype:usertype.jodatime:2.0.1') // provides mappings for joda types to use in JPA entities
 
     // optional dependency if you want to load a HAL browser when you issue an HTTP GET to the root URL: http://localhost:9000/api/opentravel/
     // compile('org.springframework.data:spring-data-rest-hal-browser')

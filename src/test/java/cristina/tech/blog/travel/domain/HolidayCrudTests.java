@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
@@ -69,5 +70,14 @@ public class HolidayCrudTests {
         // delete old holiday packages, or you could update startsOn date ;)
         holidayRepository.delete(holiday);
         assertThat(holidayRepository.count()).isEqualTo(0);
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void saveInvalid() {
+        // invalid Holiday
+        Holiday holiday = new Holiday();
+
+        // HibernateValidator kicks-off and save fails with ConstraintViolationException
+        holidayRepository.save(holiday);
     }
 }

@@ -37,7 +37,7 @@ public class DestinationCrudTests {
     private TestEntityManager entityManager; // alternative to JPA EntityManager designed for tests
 
     @Autowired
-    private DestinationRepository repository;
+    private DestinationRepository destinationRepository;
 
     private static final String KOTOR = "Kotor";
     private static final String ME = "ME";
@@ -56,14 +56,14 @@ public class DestinationCrudTests {
         entityManager.persist(destination);
 
         // find by country
-        assertThat(repository.findByCountry(ME).size()).isEqualTo(1);
+        assertThat(destinationRepository.findByCountry(ME).size()).isEqualTo(1);
 
         // find by name
-        Optional<Destination> destinationOptional = repository.findByName(KOTOR);
+        Optional<Destination> destinationOptional = destinationRepository.findByName(KOTOR);
         assertThat(destinationOptional.isPresent()).isEqualTo(true);
 
         // count find all
-        assertThat(repository.findAll()).hasSize(1);
+        assertThat(destinationRepository.findAll()).hasSize(1);
         Destination foundDestination = destinationOptional.get();
 
         // check found destination is same as inserted
@@ -75,15 +75,24 @@ public class DestinationCrudTests {
         // update add additional fact
         foundDestination.setFacts(new ArrayList<String>(Arrays.asList(KOTOR_FACT_ONE, KOTOR_FACT_TWO, KOTOR_FACT_THREE)));
         foundDestination.setDescription(KOTOR_DESCRIPTION_UPDATE);
-        repository.save(foundDestination);
+        destinationRepository.save(foundDestination);
 
         // reload, find by id
-        Destination updatedDestination = repository.findOne(foundDestination.getId());
+        Destination updatedDestination = destinationRepository.findOne(foundDestination.getId());
 
         // assert 3rd fact added
         assertThat(updatedDestination.getFacts()).hasSize(3);
         assertThat(updatedDestination.getFacts()).contains(KOTOR_FACT_THREE);
         assertThat(updatedDestination.getDescription()).isEqualTo(KOTOR_DESCRIPTION_UPDATE);
+    }
+
+    @Test(expected = javax.validation.ConstraintViolationException.class)
+    public void saveInvalid() {
+        // invalid destination
+        Destination destination = new Destination();
+
+        // HibernateValidator kicks-off and save fails with ConstraintViolationException
+        destinationRepository.save(destination);
     }
 
 }

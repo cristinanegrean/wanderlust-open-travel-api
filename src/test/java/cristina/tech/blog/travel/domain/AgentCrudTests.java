@@ -77,4 +77,13 @@ public class AgentCrudTests {
         assertThat(agentRepository.findByName("Shoestring").isPresent()).isEqualTo(true);
         assertThat(agentRepository.count()).isEqualTo(1);
     }
+
+    @Test(expected = javax.validation.ConstraintViolationException.class)
+    public void saveInvalid() {
+        // invalid agent
+        Agent agent = new Agent();
+
+        // HibernateValidator kicks-off and save fails with ConstraintViolationException
+        agentRepository.save(agent);
+    }
 }
