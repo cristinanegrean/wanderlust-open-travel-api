@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 /**
  * To test the JSON slice of the Wanderlust application, as of testing that JSON serialization and deserialization is working as expected,
  * I will use @JsonTest.
@@ -61,5 +62,4 @@ public class AgentJsonTests {
         assertThat(contactInfo.getPhone()).isEqualTo("+44 333 155 4997");
         assertThat(contactInfo.getFax()).isEqualTo("+44 333 155 4991");
     }
-
 }

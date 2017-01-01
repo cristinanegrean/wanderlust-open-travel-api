@@ -44,7 +44,7 @@ alias startdb="postgres -D /usr/local/var/postgres"
 ```
 $ java -version
 $ gradle -version
-$ git
+$ git --version
 ```
 
 ### Bootstrapping the service locally:
@@ -63,5 +63,7 @@ Main [HAL](https://apigility.org/documentation/api-primer/halprimer) links:
 * http://localhost:9000/api/opentravel/agents
 
 ### Info:
+* May you need to run webapp on another port, there are two ways to accomplish: 1) command-line when bootstrapping service: java -Dserver.port=$PORT -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres or 2) via application.properties file (inside jar)
+* The REST API base path - /api/opentravel - is configurable via changing value of value of key: spring.data.rest.base-path in application.properties
 * Database schema DDL will be generated using [Flywaydb](https://flywaydb.org) upon service start. You can check the schema version and list of DB scripts via [Spring Actuator endpoint](http://localhost:9000/flyway)
 * Enabling [Gradle Daemon](https://docs.gradle.org/current/userguide/gradle_daemon.html) will result in faster subsequent project builds.

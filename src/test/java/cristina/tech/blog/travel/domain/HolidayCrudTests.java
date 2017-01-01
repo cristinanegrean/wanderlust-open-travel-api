@@ -3,7 +3,6 @@ package cristina.tech.blog.travel.domain;
 
 import cristina.tech.blog.travel.DestinationRepository;
 import cristina.tech.blog.travel.HolidayRepository;
-import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,6 +34,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class HolidayCrudTests {
+    private static final String TRANSYLVANIA_FACT =
+            "Transylvania features as Lonelyplanet #1 Region to travel to in 2016: https://www.youtube.com/watch?v=IEzjvhdJLaM";
+
     @Autowired
     private TestEntityManager entityManager; // alternative to JPA EntityManager designed for tests
 
@@ -43,11 +46,20 @@ public class HolidayCrudTests {
     @Autowired
     private DestinationRepository destinationRepository;
 
+    @Test(expected = ConstraintViolationException.class)
+    public void saveInvalid() {
+        // invalid Holiday
+        Holiday holiday = new Holiday();
+
+        // HibernateValidator kicks-off and save fails with ConstraintViolationException
+        holidayRepository.save(holiday);
+    }
+
     @Test
     public void performCrud() {
         // before being able to create a holiday, we need a link to a persisted destination first
         Destination destination = new Destination("Transylvania", "RO");
-        destination.setFacts(Arrays.asList("Transylvania features as Lonelyplanet #1 Region to travel to in 2016: www.lonelyplanet.com/best-in-travel/regions/1"));
+        destination.setFacts(Arrays.asList(TRANSYLVANIA_FACT));
 
         // insert destination
         entityManager.persist(destination);
@@ -55,7 +67,7 @@ public class HolidayCrudTests {
         Holiday holiday = new Holiday(null, true, true);
         holiday.setDaysCount(15);
         holiday.setPrice(new BigDecimal(1700));
-        holiday.setStartOn(LocalDate.parse("2016-10-17").toDate());
+        holiday.setStartOn(LocalDateTime.now().plusMonths(5));
         holiday.setPackageInfo("Group Travel 'On a shoe string'");
         holiday.setDepartFrom("Amsterdam Airport");
         holiday.setDestination(destination);
@@ -70,14 +82,5 @@ public class HolidayCrudTests {
         // delete old holiday packages, or you could update startsOn date ;)
         holidayRepository.delete(holiday);
         assertThat(holidayRepository.count()).isEqualTo(0);
-    }
-
-    @Test(expected = ConstraintViolationException.class)
-    public void saveInvalid() {
-        // invalid Holiday
-        Holiday holiday = new Holiday();
-
-        // HibernateValidator kicks-off and save fails with ConstraintViolationException
-        holidayRepository.save(holiday);
     }
 }

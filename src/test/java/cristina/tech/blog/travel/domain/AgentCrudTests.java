@@ -2,7 +2,6 @@ package cristina.tech.blog.travel.domain;
 
 
 import cristina.tech.blog.travel.AgentRepository;
-import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 /**
  * <p>
@@ -43,19 +44,19 @@ public class AgentCrudTests {
     @Test
     public void performCrud() {
         // before being able to create a holiday, we need a link to a persisted destination first
-        Destination destination = new Destination("Japan", "JP");
-        destination.setFacts(Arrays.asList("There are over 5.5 million vending machines in Japan selling everything from umbrellas and cigarettes to canned bread and hot noodles."));
+        Destination destination = new Destination("Cluj-Napoca", "RO");
+        destination.setFacts(Arrays.asList("Student capital of Transylvania, great art galleries and theathers"));
 
         // insert destination
         entityManager.persist(destination);
 
         // before being able to create an agent, we need a link to a persisted holiday first
         Holiday holiday = new Holiday(null, true, true);
-        holiday.setDaysCount(15);
-        holiday.setPrice(new BigDecimal(1700));
-        holiday.setStartOn(LocalDate.parse("2016-10-17").toDate());
+        holiday.setDaysCount(4);
+        holiday.setPrice(new BigDecimal(150));
+        holiday.setStartOn(LocalDateTime.now().plusDays(1));
         holiday.setPackageInfo("Group Travel 'On a shoe string'");
-        holiday.setDepartFrom("Amsterdam Airport");
+        holiday.setDepartFrom("Eindhoven Airport");
         holiday.setDestination(destination);
 
         // insert holiday

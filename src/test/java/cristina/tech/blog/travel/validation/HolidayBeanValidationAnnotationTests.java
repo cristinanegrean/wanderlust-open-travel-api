@@ -3,7 +3,6 @@ package cristina.tech.blog.travel.validation;
 
 import cristina.tech.blog.travel.domain.Destination;
 import cristina.tech.blog.travel.domain.Holiday;
-import org.joda.time.LocalDate;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -11,10 +10,12 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class HolidayBeanValidationAnnotationTests {
 
@@ -52,7 +53,7 @@ public class HolidayBeanValidationAnnotationTests {
         assertThat(constraintViolations).hasSize(0);
 
         // setup optional startsOn date as a date in the past
-        holiday.setStartOn(new LocalDate().minusDays(2).toDate());
+        holiday.setStartOn(LocalDateTime.now().minusDays(2));
 
         // replay validation
         constraintViolations = validator.validate(holiday);
@@ -60,5 +61,4 @@ public class HolidayBeanValidationAnnotationTests {
 
         assertThat(constraintViolations.iterator().next().getMessage()).isEqualTo("Holiday startOn date must be in the future");
     }
-
 }

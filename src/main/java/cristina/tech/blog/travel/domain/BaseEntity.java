@@ -5,22 +5,25 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeId;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 
 @MappedSuperclass
 @JsonIgnoreProperties({"createdAt", "modifiedAt"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1126074635410771212L;
@@ -30,23 +33,14 @@ public abstract class BaseEntity implements Serializable {
     @JsonTypeId
     protected Integer id;
 
-    @Column(name = "created_at", nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    protected DateTime createdAt;
+    @Column(name = "created_at")
+    @CreatedDate
+    protected LocalDateTime createdAt;
 
-    @Column(name = "modified_at", nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    protected DateTime modifiedAt = new DateTime();
+    @Column(name = "modified_at")
+    @LastModifiedDate
+    protected LocalDateTime modifiedAt;
 
-    @PrePersist()
-    @PreUpdate()
-    public void prePersist() {
-        DateTime now = new DateTime();
-        if (createdAt == null) {
-            createdAt = now;
-        }
-        modifiedAt = now;
-    }
 
     protected BaseEntity() {
     }

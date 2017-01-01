@@ -2,13 +2,15 @@ package cristina.tech.blog.travel.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import cristina.tech.blog.travel.validation.Future;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
+
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 /**
  * Models an Open Travel Wanderlust API Holiday.
@@ -25,8 +27,8 @@ public class Holiday extends BaseEntity {
     private Destination destination;
 
     @Future(message = "Holiday startOn date must be in the future")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "CET")
-    private Date startOn;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime startOn;
 
     @Range(min = 3, max = 90)
     private Integer daysCount;
@@ -56,7 +58,7 @@ public class Holiday extends BaseEntity {
         this.destination = destination;
     }
 
-    public void setStartOn(Date startOn) {
+    public void setStartOn(LocalDateTime startOn) {
         this.startOn = startOn;
     }
 
@@ -88,7 +90,7 @@ public class Holiday extends BaseEntity {
         return destination;
     }
 
-    public Date getStartOn() {
+    public LocalDateTime getStartOn() {
         return startOn;
     }
 

@@ -7,7 +7,7 @@ repositories {
 
 buildscript {
     ext {
-        springBootVersion = '1.4.0.RELEASE'
+        springBootVersion = '1.4.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -46,22 +46,16 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
-    compile('joda-time:joda-time')
-    compile('org.jadira.usertype:usertype.jodatime:2.0.1') // provides mappings for joda types to use in JPA entities
+    compile('org.springframework.data:spring-data-rest-hal-browser')
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
 
-    // optional dependency if you want to load a HAL browser when you issue an HTTP GET to the root URL: http://localhost:9000/api/opentravel/
-    // compile('org.springframework.data:spring-data-rest-hal-browser')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 
     runtime('org.flywaydb:flyway-core')
     runtime('org.postgresql:postgresql')
     runtime('com.zaxxer:HikariCP')
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('junit:junit:4.12')
-
     testRuntime('com.h2database:h2')
-    // remove GSON test runtime after https://github.com/spring-projects/spring-boot/issues/6502 fix is released
-    testRuntime('com.google.code.gson:gson')
 }
 
 jacoco {
