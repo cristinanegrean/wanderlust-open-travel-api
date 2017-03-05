@@ -4,7 +4,7 @@ Technology stack:
 * [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
 * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
-* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of [JSR 303 - Bean Validation API] (http://beanvalidation.org/1.1/spec/). 
+* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of [JSR 303/349 - Bean Validation 1.0/1.1 API] (http://beanvalidation.org/1.1/spec/). 
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
