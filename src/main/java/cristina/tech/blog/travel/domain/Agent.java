@@ -4,7 +4,14 @@ package cristina.tech.blog.travel.domain;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
@@ -14,7 +21,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "travel_agents")
-public class Agent extends BaseEntity {
+public class Agent extends AbstractEntity {
     private static final long serialVersionUID = 1126074635410771219L;
 
     @NotEmpty(message = "Travel agent name cannot be empty!")
@@ -62,4 +69,5 @@ public class Agent extends BaseEntity {
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
     }
+
 }

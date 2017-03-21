@@ -63,11 +63,11 @@ public class CountryPostalCodeCustomValidatorTests {
 
         // validate one
         Set<ConstraintViolation<PostalAddress>> constraintViolations = validator.validate(postalAddressInAmersfoort);
-        assertThat(constraintViolations).hasSize(0);
+        assertThat(constraintViolations).isEmpty();
 
         // validate two
         constraintViolations = validator.validate(postalAddressInAmsterdam);
-        assertThat(constraintViolations).hasSize(0);
+        assertThat(constraintViolations).isEmpty();
     }
 
     @Test

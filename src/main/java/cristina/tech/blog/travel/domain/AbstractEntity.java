@@ -7,14 +7,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -23,8 +23,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties({"createdAt", "modifiedAt"})
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-@EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity implements Serializable {
+public abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 1126074635410771212L;
 
@@ -41,8 +40,18 @@ public abstract class BaseEntity implements Serializable {
     @LastModifiedDate
     protected LocalDateTime modifiedAt;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersist() {
+        LocalDateTime now = LocalDateTime.now();
 
-    protected BaseEntity() {
+        if (createdAt == null) {
+            createdAt = now;
+        }
+        modifiedAt = now;
+    }
+
+    protected AbstractEntity() {
     }
 
     public Integer getId() {

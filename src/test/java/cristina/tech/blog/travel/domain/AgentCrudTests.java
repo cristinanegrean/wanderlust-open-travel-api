@@ -77,6 +77,13 @@ public class AgentCrudTests {
         // find agent
         assertThat(agentRepository.findByName("Shoestring").isPresent()).isEqualTo(true);
         assertThat(agentRepository.count()).isEqualTo(1);
+
+        // assert that auditing fields as created and modified date fields are set automatically
+        assertThat(agent.createdAt).isNotNull();
+        assertThat(agent.modifiedAt).isNotNull();
+
+        // upon persist create, assert date fields are the same
+        assertThat(agent.createdAt).isSameAs(agent.modifiedAt);
     }
 
     @Test(expected = javax.validation.ConstraintViolationException.class)

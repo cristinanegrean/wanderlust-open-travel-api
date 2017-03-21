@@ -3,7 +3,13 @@ package cristina.tech.blog.travel.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -11,7 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "destinations")
-public class Destination extends BaseEntity {
+public class Destination extends AbstractEntity {
 
     private static final long serialVersionUID = 1126074635410771215L;
 

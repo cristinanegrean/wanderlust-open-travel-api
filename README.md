@@ -26,7 +26,11 @@ $ postgres -D /usr/local/var/postgres  // start the server
 ```
 $ createdb wanderlust
 $ psql -h localhost -U [OS X user account name] wanderlust // verify that you can connect to postgresql and the database
-```
+3) Distributing the Gradle Wrapper with the project (gradle wrapper --gradle-version 3.4.1), according to the [Gradle documentation](https://docs.gradle.org/3.4.1/userguide/gradle_wrapper.html#sec:wrapper_generation), should make it possible to build without needing to install Gradle beforehand. 
+Even better, users of the build are guaranteed to use the version of Gradle that the build was designed to work with. 
+Of course, this is also great for continuous integration servers (i.e. hereby Travis) as it requires no configuration on the server. 
+However, you may prefer [installing Gradle](https://gradle.org/install) on your machine.
+
 3) Check your environment variables
 ```
 $ sudo nano ~/.bash_profile
@@ -50,8 +54,8 @@ $ git --version
 ### Bootstrapping the service locally:
 
 ```
-$ git clone https://github.com/cristinanegrean/rest-service-bean-validation
-$ cd rest-service-bean-validation
+$ git clone https://github.com/cristinanegrean/wanderlust-open-travel-api
+$ cd wanderlust-open-travel-api
 $ ./gradlew clean build  // builds and runs the tests
 $ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
 ```
