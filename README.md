@@ -22,16 +22,17 @@ $ brew update
 $ brew install postgresql
 $ postgres -D /usr/local/var/postgres  // start the server
 ```
+
 2) Open a new terminal window
 ```
 $ createdb wanderlust
 $ psql -h localhost -U [OS X user account name] wanderlust // verify that you can connect to postgresql and the database
-3) Distributing the Gradle Wrapper with the project (gradle wrapper --gradle-version 3.4.1), according to the [Gradle documentation](https://docs.gradle.org/3.4.1/userguide/gradle_wrapper.html#sec:wrapper_generation), should make it possible to build without needing to install Gradle beforehand. 
-Even better, users of the build are guaranteed to use the version of Gradle that the build was designed to work with. 
-Of course, this is also great for continuous integration servers (i.e. hereby Travis) as it requires no configuration on the server. 
-However, you may prefer [installing Gradle](https://gradle.org/install) on your machine.
+```
 
-3) Check your environment variables
+3) Distributing the Gradle Wrapper with the project (gradle wrapper --gradle-version 3.4.1), great for continuous integration servers (i.e. hereby Travis) as it requires no configuration on the server. 
+However, you can [installing Gradle](https://gradle.org/install) on your machine.
+
+4) Check your environment variables
 ```
 $ sudo nano ~/.bash_profile
 export JAVA_HOME=$(/usr/libexec/java_home 1.8)
@@ -44,7 +45,8 @@ export PWD_POSTGRES=[secret]
 alias gradle="./gradlew" 
 alias startdb="postgres -D /usr/local/var/postgres"
 ```
-4) Open a new terminal to test toolbox installation:
+
+5) Open a new terminal to test toolbox installation:
 ```
 $ java -version
 $ gradle -version
