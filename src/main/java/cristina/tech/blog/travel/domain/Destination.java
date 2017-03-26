@@ -36,6 +36,7 @@ public class Destination extends AbstractEntity {
     @Column(name = "fact")
     private List<String> facts;
 
+    /** Getters and setters used by unit and integration tests. */
     public String getName() {
         return this.name;
     }
@@ -68,6 +69,7 @@ public class Destination extends AbstractEntity {
         this.description = description;
     }
 
+    /** Default C-tor needed by Jackson JSON. */
     public Destination() {
     }
 

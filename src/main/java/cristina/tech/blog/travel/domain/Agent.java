@@ -39,6 +39,7 @@ public class Agent extends AbstractEntity {
             inverseJoinColumns = @JoinColumn(name = "holiday_package"))
     private Set<Holiday> holidays;
 
+    /** Default C-tor needed by Jackson JSON. */
     public Agent() {
     }
 
@@ -46,16 +47,13 @@ public class Agent extends AbstractEntity {
         this.name = name;
     }
 
+    /** Getters and setters used by unit and integration tests. */
     public void setName(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Set<Holiday> getHolidays() {
-        return holidays;
     }
 
     public void setHolidays(Set<Holiday> holidays) {

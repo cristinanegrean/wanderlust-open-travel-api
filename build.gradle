@@ -43,19 +43,19 @@ repositories {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-data-rest')
-    compile('org.springframework.data:spring-data-rest-hal-browser')
-    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
+    compile('org.springframework.boot:spring-boot-starter-actuator') //Production ready features to help you monitor and manage your application
+    compile('org.springframework.boot:spring-boot-starter-data-jpa') //Java Persistence API including spring-data-jpa, spring-orm and Hibernate
+    compile('org.springframework.boot:spring-boot-starter-data-rest') //Exposing Spring Data repositories over REST via spring-data-rest-webmvc
+    compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310') //Instruct Jackson JSON serializer/deserializer to work with Java 8 Date & Time API
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test') //Imports both Spring Boot test modules as well has JUnit, AssertJ, Hamcrest, Mockito, JSONassert, JsonPath 
 
-    runtime('org.flywaydb:flyway-core')
-    runtime('org.postgresql:postgresql')
-    runtime('com.zaxxer:HikariCP')
+    runtime('org.springframework.data:spring-data-rest-hal-browser')  //Browsing Spring Data REST repositories in your browser
+    runtime('org.flywaydb:flyway-core') //Flyway Database Migrations library
+    runtime('org.postgresql:postgresql') //PostgreSQL jdbc driver
+    runtime('com.zaxxer:HikariCP') //high-performance, production-quality JDBC connection pool
 
-    testRuntime('com.h2database:h2')
+    testRuntime('com.h2database:h2') //H2 in-memory database for tests (with embedded support)
 }
 
 jacoco {

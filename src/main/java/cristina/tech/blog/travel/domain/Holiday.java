@@ -48,6 +48,7 @@ public class Holiday extends AbstractEntity {
 
     private String packageInfo;
 
+    /** Default C-tor needed by Jackson JSON. */
     public Holiday() {
     }
 
@@ -57,6 +58,7 @@ public class Holiday extends AbstractEntity {
         this.accomodationIncluded = accomodationIncluded;
     }
 
+    /** Getters and setters used by unit and integration tests. */
     public void setDestination(Destination destination) {
         this.destination = destination;
     }
@@ -91,10 +93,6 @@ public class Holiday extends AbstractEntity {
 
     public Destination getDestination() {
         return destination;
-    }
-
-    public LocalDateTime getStartOn() {
-        return startOn;
     }
 
     public Integer getDaysCount() {
