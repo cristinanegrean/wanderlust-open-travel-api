@@ -1,0 +1,28 @@
+{
+  "name": "WIZZ Tours",
+  "country": "GB",
+  "city": "London",
+  "postalCode": "AB10 1AA",
+  "email": "info@wizztours.com",
+  "phone": "+44 333 155 4997",
+  "fax": "+44 333 155 4991",
+  "website": "https://wizztours.com",
+  "holidays": [
+    {
+      "destination": {
+        "name": "Hiking and wild brown bear-spotting in the Carpathian Mountains",
+        "country": "RO"
+      },
+      "flightIncluded": true,
+      "accomodationIncluded": true
+    },
+    {
+      "destination": {
+        "name": "Visit Aarhus: 2017 european capital of culture",
+        "country": "DK"
+      },
+      "flightIncluded": true,
+      "accomodationIncluded": false
+    }
+  ]
+}

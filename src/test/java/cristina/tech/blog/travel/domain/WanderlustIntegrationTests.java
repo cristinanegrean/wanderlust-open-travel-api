@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +35,15 @@ public class WanderlustIntegrationTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void destinations() throws IOException {
+    public void destinations() {
         Destination destinationKotor = new Destination("Kotor", "ME");
 
         // POST, create destination
         URI uri = restTemplate.postForLocation("/destinations", destinationKotor);
 
         // setup API response type to be a Destination HTTP Resource
-        ParameterizedTypeReference<Resource<Destination>> responseType = new ParameterizedTypeReference<Resource<Destination>>() {};
+        ParameterizedTypeReference<Resource<Destination>> responseType = new ParameterizedTypeReference<Resource<Destination>>() {
+        };
 
         // GET by URI, id as URI Path Param, i.e.: http://localhost:54294/destinations/1, assert Response HTTP code 200: OK
         ResponseEntity<Resource<Destination>> getDestinationByURI = restTemplate.exchange(uri.toString(), GET, null, responseType);
