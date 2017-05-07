@@ -27,7 +27,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
-
 jar {
     baseName = 'wanderlust'
     version = '1.0.0-SNAPSHOT'
@@ -47,6 +46,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa') //Java Persistence API including spring-data-jpa, spring-orm and Hibernate
     compile('org.springframework.boot:spring-boot-starter-data-rest') //Exposing Spring Data repositories over REST via spring-data-rest-webmvc
     compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310') //Instruct Jackson JSON serializer/deserializer to work with Java 8 Date & Time API
+    compileOnly('org.projectlombok:lombok:1.16.16') //Gets rid of boiler plate code in Entity, POJOs, Data Objects
 
     testCompile('org.springframework.boot:spring-boot-starter-test') //Imports both Spring Boot test modules as well has JUnit, AssertJ, Hamcrest, Mockito, JSONassert, JsonPath 
 
