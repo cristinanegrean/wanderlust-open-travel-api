@@ -7,19 +7,21 @@ Blogpost: [https://cristina.tech/2017/03/28/hypermedia-driven-services-with-spri
 
 Sandbox repository to showcase creating a discoverable REST API for your application domain model using [HAL](https://apigility.org/documentation/api-primer/halprimer) as media type. 
 Technology stack:
+* [Docker](https://www.docker.com/)
 * [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring Data Rest](http://projects.spring.io/spring-data-rest/) 
 * [Spring Data JPA](http://projects.spring.io/spring-data-jpa/)
-* [Hibernate Validator] (http://hibernate.org/validator/), which is the reference implementation of [JSR 303/349 - Bean Validation 1.0/1.1 API] (http://beanvalidation.org/1.1/spec/). 
+* [Hibernate Validator](http://hibernate.org/validator/), which is the reference implementation of [JSR 303/349 - Bean Validation 1.0/1.1 API] (http://beanvalidation.org/1.1/spec/).
 
 Gamified MVP is a RESTful OpenTravel Service Server called Wanderlust. Wanderlust exposes an API that can be used by travelling agents to submit their latest and greatest destinations and holiday package recommendations to Wanderlust. Wanderlust will validate and store only the relevant ones.
 
 ### Prerequisites 
 * [Java 8 SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Postgresql 9](https://www.postgresql.org/)
-* [Gradle](https://gradle.org/)
 * [Git](https://git-scm.com/downloads)
-* [Postman](https://www.getpostman.com/)
+* [Postman](https://www.getpostman.com/) or [cURL](https://curl.haxx.se/download.html)
+* [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+or [Docker Native application](https://beta.docker.com/)
 
 ### On OS X follow below steps 
 1) Quickly setup postgresql using homebrew
@@ -35,27 +37,26 @@ $ createdb wanderlust
 $ psql -h localhost -U [OS X user account name] wanderlust // verify that you can connect to postgresql and the database
 ```
 
-3) Distributing the Gradle Wrapper with the project (gradle wrapper --gradle-version 3.4.1), great for continuous integration servers (i.e. hereby Travis) as it requires no configuration on the server. 
-However, you can [installing Gradle](https://gradle.org/install) on your machine.
+3) <b>Distributing the Gradle Wrapper with the project is
+great for continuous integration servers (i.e. hereby Travis) as it requires no configuration
+on the server and when cloning project, you do not need Gradle or Maven installed to your machine
+to run the application. Additionally the project is being built always using same build tool version.</b>
 
 4) Check your environment variables
 ```
 $ sudo nano ~/.bash_profile
 export JAVA_HOME=$(/usr/libexec/java_home 1.8)
 export JRE_HOME=$JAVA_HOME/jre
-export GRADLE_HOME=[path_to_your_gradle_installation]
-export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$GRADLE_HOME/bin
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
 export USERNAME_POSTGRES=[OS X user account name]
 export PWD_POSTGRES=[secret]
 
-alias gradle="./gradlew" 
 alias startdb="postgres -D /usr/local/var/postgres"
 ```
 
 5) Open a new terminal to test toolbox installation:
 ```
 $ java -version
-$ gradle -version
 $ git --version
 ```
 
@@ -64,8 +65,7 @@ $ git --version
 ```
 $ git clone https://github.com/cristinanegrean/wanderlust-open-travel-api
 $ cd wanderlust-open-travel-api
-$ ./gradlew clean build  // builds and runs the tests
-$ java -jar build/libs/wanderlust-1.0.0-SNAPSHOT.jar --spring.profiles.active=postgres
+$ ./gradlew clean build buildDocker
 ```
 
 ### Project contains a [test collection](https://github.com/cristinanegrean/wanderlust-open-travel-api/blob/master/Wanderlust_OpenTravelAPI_Postman_collection.json) which can be imported into [Postman](https://www.getpostman.com/) to navigate API links.

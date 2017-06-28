@@ -1,0 +1,26 @@
+version: '2'
+services:
+  postgresdb:
+    container_name: wanderlust-datastore
+    image: postgres
+             ports:
+              - "5432:5432"
+             environment:
+              - POSTGRES_USER=cristinanegrean
+              - POSTGRES_PASSWORD=mysecretpassword
+              - POSTGRES_DB=wanderlust
+
+  web:
+    container_name: open-travel-service
+    build: build/libs
+    image: open-travel-spring-boot-docker
+    depends_on: # wanderlust-datastore will be started before the open-travel-service
+      - postgresdb
+    ports:
+      - "9000:9000"
+    links:
+      - postgres
+
+
+
+
