@@ -65,7 +65,7 @@ $ git --version
 ```
 $ git clone https://github.com/cristinanegrean/wanderlust-open-travel-api
 $ cd wanderlust-open-travel-api
-$ ./gradlew clean build buildDocker
+$ docker-compose up
 ```
 
 ### Project contains a [test collection](https://github.com/cristinanegrean/wanderlust-open-travel-api/blob/master/Wanderlust_OpenTravelAPI_Postman_collection.json) which can be imported into [Postman](https://www.getpostman.com/) to navigate API links.
