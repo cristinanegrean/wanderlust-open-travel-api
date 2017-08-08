@@ -1,7 +1,4 @@
-### wanderlust-open-travel-api [![Build Status](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api.svg?branch=master)](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api) [![Coverage Status](https://coveralls.io/repos/github/cristinanegrean/wanderlust-open-travel-api/badge.svg)](https://coveralls.io/github/cristinanegrean/wanderlust-open-travel-api)
-
-[![BCH compliance](https://bettercodehub.com/edge/badge/cristinanegrean/wanderlust-open-travel-api?branch=master)](https://bettercodehub.com/)
-<img src='https://bettercodehub.com/edge/badge/cristinanegrean/wanderlust-open-travel-api?branch=master'>
+### wanderlust-open-travel-api [![Build Status](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api.svg?branch=master)](https://travis-ci.org/cristinanegrean/wanderlust-open-travel-api) [![Coverage Status](https://coveralls.io/repos/github/cristinanegrean/wanderlust-open-travel-api/badge.svg)](https://coveralls.io/github/cristinanegrean/wanderlust-open-travel-api)[![BCH compliance](https://bettercodehub.com/edge/badge/cristinanegrean/wanderlust-open-travel-api?branch=master)](https://bettercodehub.com/)
 
 Blogposts:
 * [https://cristina.tech/2017/03/28/hypermedia-driven-services-with-spring-data-rest](https://cristina.tech/2017/03/28/hypermedia-driven-services-with-spring-data-rest)
