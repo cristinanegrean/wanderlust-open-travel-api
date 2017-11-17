@@ -51,7 +51,7 @@ public class DestinationCrudTests {
 
     @Test
     public void performCrud() {
-        Destination destination = new Destination(KOTOR, ME, new ArrayList<String>(Arrays.asList(KOTOR_FACTS)), KOTOR_DESCRIPTION);
+        Destination destination = new Destination(KOTOR, ME, KOTOR_DESCRIPTION, new ArrayList<String>(Arrays.asList(KOTOR_FACTS)) );
         // insert
         entityManager.persist(destination);
 

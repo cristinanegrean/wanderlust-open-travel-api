@@ -3,6 +3,10 @@ package cristina.tech.blog.travel.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import cristina.tech.blog.travel.validation.Future;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
@@ -21,6 +25,8 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name = "holiday_packages")
+@Data
+@NoArgsConstructor(force = true)
 public class Holiday extends AbstractEntity {
     private static final long serialVersionUID = 1126074635410771213L;
 
@@ -48,74 +54,9 @@ public class Holiday extends AbstractEntity {
 
     private String packageInfo;
 
-    /** Default C-tor needed by Jackson JSON. */
-    public Holiday() {
-    }
-
     public Holiday(Destination destination, Boolean flightIncluded, Boolean accomodationIncluded) {
         this.destination = destination;
         this.flightIncluded = flightIncluded;
         this.accomodationIncluded = accomodationIncluded;
-    }
-
-    /** Getters and setters used by unit and integration tests. */
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
-
-    public void setStartOn(LocalDateTime startOn) {
-        this.startOn = startOn;
-    }
-
-    public void setDaysCount(Integer daysCount) {
-        this.daysCount = daysCount;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public void setPackageInfo(String packageInfo) {
-        this.packageInfo = packageInfo;
-    }
-
-    public void setDepartFrom(String departFrom) {
-        this.departFrom = departFrom;
-    }
-
-    public void setFlightIncluded(Boolean flightIncluded) {
-        this.flightIncluded = flightIncluded;
-    }
-
-    public void setAccomodationIncluded(Boolean accomodationIncluded) {
-        this.accomodationIncluded = accomodationIncluded;
-    }
-
-    public Destination getDestination() {
-        return destination;
-    }
-
-    public Integer getDaysCount() {
-        return daysCount;
-    }
-
-    public String getDepartFrom() {
-        return departFrom;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Boolean getFlightIncluded() {
-        return flightIncluded;
-    }
-
-    public Boolean getAccomodationIncluded() {
-        return accomodationIncluded;
-    }
-
-    public String getPackageInfo() {
-        return packageInfo;
     }
 }

@@ -1,6 +1,9 @@
 package cristina.tech.blog.travel.domain;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.CollectionTable;
@@ -17,6 +20,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "destinations")
+@Data
+@NoArgsConstructor(force = true)
+@AllArgsConstructor
 public class Destination extends AbstractEntity {
 
     private static final long serialVersionUID = 1126074635410771215L;
@@ -36,51 +42,8 @@ public class Destination extends AbstractEntity {
     @Column(name = "fact")
     private List<String> facts;
 
-    /** Getters and setters used by unit and integration tests. */
-    public String getName() {
-        return this.name;
-    }
-
-    public String getCountry() {
-        return this.country;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public List<String> getFacts() {
-        return this.facts;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setFacts(List<String> facts) {
-        this.facts = facts;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /** Default C-tor needed by Jackson JSON. */
-    public Destination() {
-    }
-
     public Destination(String name, String country) {
         this.name = name;
         this.country = country;
-    }
-
-    public Destination(String name, String country, List<String> facts, String description) {
-        this(name, country);
-        this.facts = facts;
-        this.description = description;
     }
 }

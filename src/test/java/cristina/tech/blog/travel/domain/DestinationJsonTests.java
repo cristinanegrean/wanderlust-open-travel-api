@@ -49,7 +49,7 @@ public class DestinationJsonTests {
     @Test
     public void testSerialize() throws Exception {
         Destination destination = new Destination(
-                TRANSYLVANIA, RO, Arrays.asList(TRANSYLVANIA_FACT), MOUNTAIN_THRILLS_AND_EDGY_ART_IN_VLAD_S_FORMER_HOME);
+                TRANSYLVANIA, RO, MOUNTAIN_THRILLS_AND_EDGY_ART_IN_VLAD_S_FORMER_HOME, Arrays.asList(TRANSYLVANIA_FACT));
 
         // serialize Destination POJO to JSON
         JsonContent<Destination> jsonContent = json.write(destination);
