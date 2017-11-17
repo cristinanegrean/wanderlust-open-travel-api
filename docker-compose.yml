@@ -1,0 +1,29 @@
+version: '2'
+services:
+  postgresdb:
+    container_name: wanderlust-datastore
+    image: postgres:9.6.3
+    ports:
+         - "5432:5432"
+    environment:
+         - POSTGRES_USER=postgres
+         - POSTGRES_PASSWORD=demo
+    command: postgres
+  web:
+    container_name: open-travel-service
+    build: build/libs
+    image: open-travel-spring-boot-docker
+    depends_on: # wanderlust-datastore will be started before the open-travel-service
+      - postgresdb
+    ports:
+      - "9000:9000"
+    links:
+      - postgresdb
+    environment:
+      #SPRING_PROFILES_ACTIVE: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: demo
+
+
+

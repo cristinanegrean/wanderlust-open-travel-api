@@ -1,3 +1,6 @@
+sudo: required
 language: java
 jdk: oraclejdk8
-script: ./gradlew clean build coveralls
+services:
+  - docker
+script: ./gradlew clean build buildDocker coveralls
