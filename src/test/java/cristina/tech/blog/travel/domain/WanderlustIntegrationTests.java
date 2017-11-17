@@ -1,6 +1,7 @@
 package cristina.tech.blog.travel.domain;
 
 
+import cristina.tech.blog.travel.WanderlustApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import static org.springframework.http.HttpMethod.PUT;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = WanderlustApplication.class)
 public class WanderlustIntegrationTests {
     private static final String KOTOR_FACT        =
             "At 1300 metres deep, the Grand Canyon of Tara River is actually the deepest canyon in Europe and second largest in the world after the Colorado canyon in the USA.";
